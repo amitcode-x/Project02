@@ -20,9 +20,48 @@ def insert_topic(request):
     return render(request ,'insert_topic.html')
 
 
+def insert_webpage(request):
+    querysetoflistoftopicobject = Topic.objects.all()
+    d = {'querysetoflistoftopicobject': querysetoflistoftopicobject}
+
+    if request.method == 'POST':
+        tn = request.POST['topic_name']
+        to = Topic.objects.get(topic_name=tn)
+        na = request.POST['name']
+        ur = request.POST['url']
+
+        TWO = Webpage.objects.get_or_create(topic=to, name=na, url=ur)
+
+        if TWO[1]:
+            return HttpResponse('Object is created')
+        else:
+            return HttpResponse('Object is already present')
+
+    return render(request, 'insert_webpage.html', d)
 
 
+def insert_accessrecord(request):
+    querysetoflistofwebpageobject = Webpage.objects.all()
+    d = {'querysetoflistofwebpageobject': querysetoflistofwebpageobject}
 
+    if request.method == 'POST':
+        n = request.POST['name']
+        na = Webpage.objects.get(name=n)
+        at = request.POST['author']
+        da = request.POST['date']
+
+        TWO = AccessRecord.objects.get_or_create(
+            name=na,
+            author=at,
+            date=da
+        )
+
+        if TWO[1]:
+            return HttpResponse('Object is created')
+        else:
+            return HttpResponse('Object is already present')
+
+    return render(request, 'insert_accessrecord.html', d)
 
 
 

@@ -14,17 +14,17 @@
         <div class="row justify-content-center">
             <div class="col-md-4">
 
-                <h3 class="text-center text-danger mb-3">Insert Webpage Name</h3>
+                <h3 class="text-center text-danger mb-3">Insert Access Record</h3>
 
                 <form method="POST" class="p-4 border rounded bg-white">
                     {% csrf_token %}
-                    <label for="topicname" class="form-label">Topic Name</label>
+                    <label for="name" class="form-label">Name</label>
 
-                    <select name="topic_name" id="">
+                    <select name="name" id="">
 
-                        {% for TO in querysetoflistoftopicobject %}
+                        {% for TO in querysetoflistofwebpageobject %}
 
-                        <option value="{{TO.topic_name}}"> {{TO.topic_name}}</option>
+                        <option value="{{TO.name}}"> {{TO.name}}</option>
 
 
                         {% endfor %}
@@ -33,13 +33,12 @@
                     <br>
                     <br>
 
-                    <label for="name" class="form-label">Name</label>
-                    <input placeholder="Enter the name" id="name" type="text" name="name" class="form-control mb-3">
+                    <label for="author" class="form-label">Author</label>
+                    <input placeholder="Enter the author" id="author" type="text" name="author" class="form-control mb-3">
 
-                    <label for="url" class="form-label">URL</label>
+                    <label for="date" class="form-label">Date</label>
 
-                    <input placeholder="Enter the url" id="url" type="text" name="url" class="form-control mb-3">
-
+                    <input placeholder="Enter the date" id="date" type="date" name="date" class="form-control mb-3">
 
 
                     <!-- <input placeholder="Enter the topic name" id="topic" type="text" name="topic"
