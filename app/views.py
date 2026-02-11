@@ -20,7 +20,7 @@ def insert_topic(request):
     return render(request ,'insert_topic.html')
 
 
-def insert_webpage(request):
+def insert_webpage(request):   
     querysetoflistoftopicobject = Topic.objects.all()
     d = {'querysetoflistoftopicobject': querysetoflistoftopicobject}
 
